@@ -4,14 +4,10 @@ use CodeIgniter\Model;
 
 class MahasiswaModel extends Model
 {
-    /**
-     * table name
-     */
     protected $table = "mahasiswa";
 
-    /**
-     * allowed Field
-     */
+    protected $primaryKey = 'nim'; // Menggunakan 'nim' sebagai primary key
+
     protected $allowedFields = [
         'nim',
         'nama',

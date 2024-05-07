@@ -40,7 +40,9 @@
                                 <td><?php echo $b['nama'] ?></td>
                                 <td><?php echo $b['kelas'] ?></td>
                                 <td><?php echo $b['angkatan'] ?></td>
-                               
+                                <td class="text-center">
+                                    <a href="<?php echo base_url('mahasiswa/edit/'.$b['nim']) ?>" class="btn btn-sm btn-primary">EDIT</a>
+                                </td>
                             </tr>
 
                         <?php endforeach ?>

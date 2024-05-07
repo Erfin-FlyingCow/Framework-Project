@@ -19,7 +19,7 @@ class Post extends Migration
                 'type'          => 'VARCHAR',
                 'constraint'    => '255'
             ],
-            'comment'    => [
+            'content'    => [
                 "type"          => 'TEXT'
             ],          
         ]);

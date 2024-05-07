@@ -27,7 +27,7 @@ class Mahasiswa extends Migration
             ],
         ]);
         $this->forge->addkey('nim',TRUE);
-        $this->forge->createTable('Mahasiswa');
+        $this->forge->createTable('mahasiswa');
     }
 
     public function down()

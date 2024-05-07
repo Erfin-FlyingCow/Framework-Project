@@ -98,4 +98,86 @@ class Mahasiswa extends Controller
         }
 
     }
+
+    public function edit($nim)
+    {
+        //model initialize
+        $postMahasiswa = new MahasiswaModel();
+
+        $data = array(
+            'mahasiswa' => $postMahasiswa->find($nim)
+        );
+
+        return view('mahasiswa-edit', $data);
+    }
+
+    /**
+     * update function
+     */
+    public function update($nim)
+    {
+        //load helper form and URL
+        helper(['form', 'url']);
+         
+        //define validation
+        $validation = $this->validate([
+            'nim' => [
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => 'Masukkan nim.'
+                ]
+            ],
+            'nama'    => [
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => 'Masukkan Nama.'
+                ]
+                
+            ],
+            'kelas'    => [
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => 'Masukkan Kelas.'
+                ]
+                
+            ],
+            'angkatan'    => [
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => 'Masukkan Angkatan.'
+                ]
+                
+            ],
+        ]);
+
+        if(!$validation) {
+
+            //model initialize
+            $mahasiswaModel = new MahasiswaModel();
+
+            //render view with error validation message
+            return view('mahasiswa-edit', [
+                'mahasiswa' => $mahasiswaModel->find($nim),
+                'validation' => $this->validator
+            ]);
+
+        } else {
+
+            //model initialize
+            $mahasiswaModel = new MahasiswaModel();
+            
+            //insert data into database
+            $mahasiswaModel->update($nim, [
+                'nama' => $this->request->getPost('nama'),
+                'kelas' => $this->request->getPost('kelas'),
+                'angkatan' => $this->request->getPost('angkatan'),
+            ]);
+
+            //flash message
+            session()->setFlashdata('message', 'Mahasiswa Berhasil Diupdate');
+
+            return redirect()->to(base_url('mahasiswa'));
+        }
+
+    }
 }
