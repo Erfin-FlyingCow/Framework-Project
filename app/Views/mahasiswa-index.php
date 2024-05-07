@@ -42,6 +42,7 @@
                                 <td><?php echo $b['angkatan'] ?></td>
                                 <td class="text-center">
                                     <a href="<?php echo base_url('mahasiswa/edit/'.$b['nim']) ?>" class="btn btn-sm btn-primary">EDIT</a>
+                                    <a href="<?php echo base_url('mahasiswa/delete/'.$b['nim']) ?>" class="btn btn-sm btn-danger">HAPUS</a>
                                 </td>
                             </tr>
 

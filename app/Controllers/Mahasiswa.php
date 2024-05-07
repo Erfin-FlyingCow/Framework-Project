@@ -102,10 +102,10 @@ class Mahasiswa extends Controller
     public function edit($nim)
     {
         //model initialize
-        $postMahasiswa = new MahasiswaModel();
+        $mahasiswaModel = new MahasiswaModel();
 
         $data = array(
-            'mahasiswa' => $postMahasiswa->find($nim)
+            'mahasiswa' => $mahasiswaModel->find($nim)
         );
 
         return view('mahasiswa-edit', $data);
@@ -179,5 +179,25 @@ class Mahasiswa extends Controller
             return redirect()->to(base_url('mahasiswa'));
         }
 
+    }
+
+    /**
+     * delete function
+     */
+    public function delete($nim)
+    {
+        //model initialize
+        $mahasiswaModel = new MahasiswaModel();
+    
+        $mahasiswa = $mahasiswaModel->find($nim);
+    
+        if($mahasiswa) {
+            $mahasiswaModel->delete($nim);
+    
+            //flash message
+            session()->setFlashdata('message', 'Mahasiswa Berhasil Dihapus');
+    
+            return redirect()->to(base_url('mahasiswa'));
+        }
     }
 }
