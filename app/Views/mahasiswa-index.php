@@ -50,6 +50,7 @@
                     </tbody>
                 </table>
                 <?php echo $pager->links('mahasiswa', 'bootstrap_pagination') ?>
+                <a href="<?php echo base_url('mahasiswa/delete/'.$b['nim']) ?>" class="btn btn-sm btn-secondary">PRINT</a>
             </div>
         </div>
     </div>
