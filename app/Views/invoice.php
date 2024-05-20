@@ -22,7 +22,6 @@
                     
                 <?php endif ?>
 
-                <a href="<?php echo base_url('mahasiswa/create') ?>" class="btn btn-md btn-success mb-3">TAMBAH DATA</a>
                 <table class="table table-bordered table-striped">
                     <thead class="thead-dark">
                         <tr>
@@ -30,27 +29,14 @@
                             <th>NAMA</th>
                             <th>KELAS</th>
                             <th>ANGKATAN</th>
-                            <th>AKSI</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($mahasiswa as $key => $b) : ?>
-                            <tr>
-                                <td><?php echo $b['nim'] ?></td>
-                                <td><?php echo $b['nama'] ?></td>
-                                <td><?php echo $b['kelas'] ?></td>
-                                <td><?php echo $b['angkatan'] ?></td>
-                                <td class="text-center">
-                                    <a href="<?php echo base_url('mahasiswa/edit/'.$b['nim']) ?>" class="btn btn-sm btn-primary">EDIT</a>
-                                    <a href="<?php echo base_url('mahasiswa/delete/'.$b['nim']) ?>" class="btn btn-sm btn-danger">HAPUS</a>
-                                </td>
-                            </tr>
-
-                        <?php endforeach ?>
+                    
                     </tbody>
-                    <a href="<?php echo base_url('/pdf/cetak') ?>" class="btn btn-sm btn-secondary">PRINT</a>
+                    <a href="<?php echo base_url() ?>" class="btn btn-sm btn-secondary">PRINT</a>
                 </table>
-                <?php echo $pager->links('mahasiswa', 'bootstrap_pagination') ?>
+               
             </div>
         </div>
     </div>
