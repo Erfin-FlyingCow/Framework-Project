@@ -254,8 +254,19 @@ class Mahasiswa extends Controller
         // This method has several options, check the source code documentation for more information.
         $pdf->AddPage();
 
+        //model initialize
+        $mahasiswaModel = new MahasiswaModel();
+
+        //pager initialize
+        $pager = \Config\Services::pager();
+
+        $data = array(
+            'mahasiswa' => $mahasiswaModel->paginate(2, 'mahasiswa'),
+            'pager' => $mahasiswaModel->pager
+        );
+
        //view mengarah ke invoice.php
-        $html = view('invoice');
+        $html = view('invoice',$data);
 
         // Print text using writeHTMLCell()
         $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
@@ -267,17 +278,4 @@ class Mahasiswa extends Controller
         $pdf->Output('invoice-pos-sobatcoding.pdf', 'I');
 
     }
-
-    public function __construct() {
-        $this->MahasiswaModel = new MahasiswaModel();
-    }
-
-    public function index() {
-
-        $data =array(
-            'buku'=>$this->MahasiswaModel->all_data(),
-        );
-        return view('invoice', $data);
-    }
-    
 }
