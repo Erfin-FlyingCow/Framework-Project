@@ -23,6 +23,7 @@
                 <?php endif ?>
 
                 <a href="<?php echo base_url('mahasiswa/create') ?>" class="btn btn-md btn-success mb-3">TAMBAH DATA</a>
+                <a href="<?php echo base_url('/pdf/cetak') ?>" class="btn btn-md btn-secondary mb-3">PRINT</a>
                 <table class="table table-bordered table-striped">
                     <thead class="thead-dark">
                         <tr>
@@ -31,6 +32,7 @@
                             <th>KELAS</th>
                             <th>ANGKATAN</th>
                             <th>AKSI</th>
+            
                         </tr>
                     </thead>
                     <tbody>
@@ -48,10 +50,11 @@
 
                         <?php endforeach ?>
                     </tbody>
-                    <a href="<?php echo base_url('/pdf/cetak') ?>" class="btn btn-sm btn-secondary">PRINT</a>
                 </table>
+                
                 <?php echo $pager->links('mahasiswa', 'bootstrap_pagination') ?>
             </div>
+            
         </div>
     </div>
 
