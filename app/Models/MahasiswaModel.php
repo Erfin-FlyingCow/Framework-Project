@@ -14,4 +14,9 @@ class MahasiswaModel extends Model
         'kelas',
         'angkatan'
     ];
+
+
+    public function all_data() {
+        return $this->db->table('mahasiswa')->get()->getResultArray();
+    }
 }
